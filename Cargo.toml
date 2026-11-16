@@ -1,0 +1,12 @@
+[package]
+name = "lynx-eval"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Fast, dependency-free 5-7 card poker hand evaluator and exact hand-vs-hand equity"
+license = "Apache-2.0"
+readme = "README.md"
+keywords = ["poker", "hand-evaluator", "equity", "holdem", "cards"]
+categories = ["algorithms"]
+
+[dependencies]
