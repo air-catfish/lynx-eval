@@ -6,6 +6,7 @@ rust-version = "1.85"
 description = "Fast, dependency-free 5-7 card poker hand evaluator and exact hand-vs-hand equity"
 license = "Apache-2.0"
 readme = "README.md"
+documentation = "https://docs.rs/lynx-eval"
 keywords = ["poker", "hand-evaluator", "equity", "holdem", "cards"]
 categories = ["algorithms"]
 
