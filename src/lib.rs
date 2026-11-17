@@ -1,9 +1,9 @@
 //! Fast, dependency-free 5–7 card poker hand evaluator and exact hand-vs-hand equity.
 //!
-//! The crate is deliberately small and honest: it knows cards, hand strength and
-//! equity, and nothing about solvers, ranges or strategy. Every number it returns
-//! is either an exact count over all remaining boards or a Monte-Carlo estimate
-//! that says so via [`Equity::exact`].
+//! The crate is deliberately small and honest: it knows cards, hand strength,
+//! equity, ranges with weights and range-vs-range equity, and nothing about
+//! solvers or strategy. Every number it returns is either an exact count over all
+//! remaining boards or a Monte-Carlo estimate that says so via `exact`.
 //!
 //! # Example
 //!
@@ -39,8 +39,14 @@ mod cards;
 mod describe;
 mod equity;
 mod eval;
+mod range;
+mod range_vs_range;
 
 pub use cards::{Card, CardError, DECK_SIZE, Rank, Suit};
 pub use describe::{HandDescription, describe};
 pub use equity::{Equity, equity_vs_hand, equity_vs_hand_mc};
 pub use eval::{EvalError, HandCategory, HandValue, best_five, evaluate};
+pub use range::{Range, RangeEquity, RangeError, equity_vs_range, equity_vs_range_mc};
+pub use range_vs_range::{
+    EXACT_COMPARISON_BUDGET, RangeVsRangeEquity, equity_range_vs_range, equity_range_vs_range_mc,
+};

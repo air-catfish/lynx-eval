@@ -233,12 +233,12 @@ fn enumerate(
 }
 
 /// xorshift64*: крошечный детерминированный генератор без зависимостей.
-struct Rng {
+pub(crate) struct Rng {
     state: u64,
 }
 
 impl Rng {
-    fn new(seed: u64) -> Self {
+    pub(crate) fn new(seed: u64) -> Self {
         Rng {
             state: if seed == 0 {
                 0x9E37_79B9_7F4A_7C15
@@ -248,7 +248,7 @@ impl Rng {
         }
     }
 
-    fn next_u64(&mut self) -> u64 {
+    pub(crate) fn next_u64(&mut self) -> u64 {
         let mut x = self.state;
         x ^= x >> 12;
         x ^= x << 25;

@@ -107,6 +107,13 @@ pub enum EvalError {
     NotEnoughRemainingCards,
     /// Монте-Карло вызван с `samples == 0`.
     EmptySamples,
+    /// Диапазон пуст или полностью заблокирован.
+    EmptyRange,
+    /// Точный перебор для такого запроса слишком велик (префлоп).
+    ExactTooLarge,
+    /// Монте-Карло не смог выбрать совместимую пару комбо за отведённое
+    /// число попыток. Возможна только при почти полном пересечении диапазонов.
+    SamplingFailed,
 }
 
 impl fmt::Display for EvalError {
@@ -123,6 +130,16 @@ impl fmt::Display for EvalError {
             }
             EvalError::NotEnoughRemainingCards => write!(f, "в колоде не хватает карт на борд"),
             EvalError::EmptySamples => write!(f, "число сэмплов должно быть больше нуля"),
+            EvalError::EmptyRange => write!(f, "диапазон пуст или заблокирован"),
+            EvalError::ExactTooLarge => {
+                write!(f, "точный перебор для этого запроса слишком велик")
+            }
+            EvalError::SamplingFailed => {
+                write!(
+                    f,
+                    "не удалось выбрать совместимую пару комбо: диапазоны почти полностью пересекаются"
+                )
+            }
         }
     }
 }
